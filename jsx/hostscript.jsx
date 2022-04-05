@@ -237,7 +237,7 @@ function showHideDMLabels(showHide, which) {
          *  
          */
         // If the product is 2SBT or MAG, should export to "[High Quality Print]"
-        if (renameTo == "2SBT" || renameTo == "MAG" || renameTo == "100#DH" || renameTo.split("_")[0] == "SPL" || renameTo.split("_")[0] == "MPL" || renameTo.split("_")[0] == "LPL") {
+        if (renameTo == "2SBT" || renameTo == "MAG" || renameTo == "100#DH" || renameTo.split("_")[0] == "SPL" || renameTo.split("_")[0] == "MPL" || renameTo.split("_")[0] == "LPL" || renameTo == "8_5x11FL") {
             pdfPreset = "[High Quality Print]";
         }
 
@@ -873,7 +873,8 @@ function addCode() {
     var codeBg = myPage.rectangles.add({
         geometricBounds:[0,0,0.11,0.51],
         fillColor:"Paper",
-        strokeWeight:0
+        // strokeWeight:0
+        strokeColor:"None"
     });
 
     var code = myPage.textFrames.add({
