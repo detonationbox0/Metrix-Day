@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+        
+<link id="ccstyleTheme" href="css/styles-dark.css" rel="stylesheet" type="text/css" />
+<link id="tabulator" href="node_modules/tabulator-tables/dist/css/tabulator_midnight.css" rel="stylesheet" type="text/css" />
+<link id="hostStyle" rel="stylesheet" href="css/styles.css"/>
+
+<!-- https://fontawesome.com/ -->
+<link id="hostStyle" rel="stylesheet" href="css/all.css"/>
+
+<title></title>
+</head>
+
+<body require-nodejs class="hostElt" id="drag-file">
+    <div id="gpu-area">
+        <label for="gpu" id="gpu-text">Checking for current GPU status...</label><input type="checkbox" id="gpu-check" name="gpu">
+    </div>
+    
+    <button id="settings-button">
+        <i class="fas fa-cogs"></i>
+    </button>
+    <div id="display-message">
+        <div id="msg-center">
+            <div id="msg-img"></div>
+            <p id="msg-txt"></p>
+        </div>
+    </div>
+    <div id="content">        
+       
+        <!-- Open Files Button -->
+        <!-- <div id="open-btn-area">
+            <button id="btn_open" class="btn-big ccstyle hostFontSize">Open Files</button>
+        </div> -->
+
+        <!-- Initially Invisible Section for Options -->
+        <div id="invisible-options">
+            <div class="brighter-tint">
+                <!-- 
+                    Menu --------------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="menu-options">
+                    <div class="tool">
+                        <!-- Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="menu-choice" multiple>
+                            <option value="2019-c" class="select-choices" selected>2019</option>
+                            <option value="2017-c" class="select-choices">2017</option>
+                            <option value="2015-c" class="select-choices">2015</option>
+                            <option value="2013-c" class="select-choices">2013</option>
+                        </select>
+                    </div>
+                    <div class="tool">
+                        <!-- Fold Correct Button -->
+                        <button class="btn-big ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
+                    </div>
+                    <div class="tool">
+                        <!-- Coupon Fold Check Box -->
+                        <label class="container ccstyle hostFontSize" id="coupon-container">Coupon Fold
+                                <input type="checkbox" value="true" checked="checked" id="coupon" checked>
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Postcard -------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="pc-options">
+                    <div class="tool">
+                        <!-- Fold Correct Button -->
+                        <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                    </div>
+                    <label class="container ccstyle hostFontSize">View Scratch-Off Box
+                        <input type="checkbox" value="true" class="so-box" id="so-pc">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container ccstyle hostFontSize">View Peel Box
+                        <input type="checkbox" value="true" class="peel-box" id="peel-pc">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    XL Menu Options ------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="xlmenu-options">
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="xlmenu-choice" multiple>
+                            <option value="2019-c" class="select-choices" selected>2019</option>
+                            <option value="2017-c" class="select-choices">2017</option>
+                        </select>
+                    </div>
+                    <div class="tool">
+                        <!-- Fold Correct Button -->
+                        <button class="btn-big ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
+                    </div>
+                    <!-- Coupon Fold Check Box -->
+                    <label class="container ccstyle hostFontSize" id="coupon-container">Coupon Fold
+                        <input type="checkbox" value="true" checked="checked" id="xl-coupon" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Jumbo PC ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="jumbopc-options">
+                    <div class="tool">
+                        <!-- Fold Correct Button -->
+                        <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                    </div>
+                    <label class="container ccstyle hostFontSize">View Scratch-Off Box
+                        <input type="checkbox" value="true" class="so-box" id="so-jumbo">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    2SBT ------------------------------------------------------------------------------------------------------------------------ |
+                --> <!-- #region -->
+                <div class="options" id="2sbt-options">
+                        <div class="tool">
+                            <!-- Fold Correct Button -->
+                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Magnet ---------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="mag-options">
+                        <div class="tool">
+                            <!-- Fold Correct Button -->
+                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Door Hanger ----------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="dh-options">
+                        <div class="tool">
+                            <!-- Fold Correct Button -->
+                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    80# Flier ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="80fl-options">
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="80fl-choice" multiple>
+                            <option value="no fold" class="select-choices">No Fold</option>
+                            <option value="tri-fold" class="select-choices" selected>Tri-Fold</option>
+                            <option value="bi-fold" class="select-choices">Bi-Fold</option>
+                            <option value="coupon-fold" class="select-choices">Coupon Fold</option>
+                            <option value="bi-fold flat" class="select-choices">Bi-Fold Flat</option>
+                            <option value="tall bi-fold" class="select-choices">Tall Bi-Fold</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Colossal PC ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="colossal-options">
+                    <div class="tool">
+                            <!-- Fold Correct Button -->
+                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        </div>
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="colossal-choice" multiple>
+                            <option value="Print Only" class="select-choices">Not Mailing / EDDM</option>
+                            <option value="Lower Right" class="select-choices" selected>Lower Right</option>
+                            <option value="Upper Right" class="select-choices">Upper Right</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Folded Magnet ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="fmagdm-options">
+                    
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- 
+                    Folded Magnet EDDM ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="fmageddm-options">
+
+                    </div>
+                <!-- #endregion -->
+                
+                <!-- 
+                    Small Plastic Card ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="spl-options">
+                        <div class="tool">
+                                <!-- Fold Correct Button -->
+                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            </div>
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="spl-choice" multiple>
+                            <option value="1c" class="select-choices">1 Coupon</option>
+                            <option value="2c" class="select-choices" selected>2 Coupon</option>
+                            <option value="nm" class="select-choices">New Mover / Birthday</option>
+                            <option value="1c1k" class="select-choices">1 Coupon 1 Keycard</option>
+                            <option value="1c2k" class="select-choices">1 Coupon 2 Keycards</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <!-- #endregion -->
+
+                <!-- 
+                Medium Plastic Card ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="mpl-options">
+                        <div class="tool">
+                                <!-- Fold Correct Button -->
+                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            </div>
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="mpl-choice" multiple>
+                            <option value="1c" class="select-choices">1 Coupon</option>
+                            <option value="2c" class="select-choices" selected>2 Coupon</option>
+                            <option value="1c1k" class="select-choices">1 Coupon 1 Keycard</option>
+                            <option value="1c2k" class="select-choices">1 Coupon 2 Keycards</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <!-- #endregion -->
+
+                <!-- 
+                Large Plastic Card ------------------------------------------------------------------------------------------------------------------- |
+                --> <!-- #region -->
+                <div class="options" id="lpl-options">
+                        <div class="tool">
+                                <!-- Fold Correct Button -->
+                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            </div>
+                    <div class="tool">
+                        <!-- XL Menu Template Selection -->
+                        <select class="ccstyle hostFontSize menu-choice" id="lpl-choice" multiple>
+                            <option value="1c" class="select-choices">1 Coupon</option>
+                            <option value="2c" class="select-choices" selected>2 Coupon</option>
+                            <option value="3c" class="select-choices">3 Coupon</option>
+                            <option value="4c" class="select-choices">4 Coupon</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <!-- #endregion -->
+
+
+                <!-- Everything exports and has the barcode option... -->
+                <!-- Direct Mail Check Box -->
+                <div class="tool" id="barcode-check-container">
+                    <!-- <label class="container ccstyle hostFontSize" id="just-barcode">Barcode
+                            <input type="checkbox" value="true" checked="checked" id="barcode-label" checked>
+                            <span class="checkmark"></span>
+                    </label> -->
+                    <label class="container ccstyle hostFontSize">Indicia
+                        <input type="checkbox" value="true" checked="checked" id="indicia-label" checked>
+                        <span class="checkmark"></span>
+                </label>
+                </div>
+
+                <!-- Export Button -->
+                <!-- <div id="custom-barcode-container">
+                    <h2>Custom Barcode</h2>
+                    <input type="text" id="custom-barcode" class="metrix-input"><button id="update-barcode" class="metrix-button">Update</button>
+                </div> -->
+                
+                <!-- 2020 update: adding a custom year-->
+                <div id="custom-year-container">
+                    <h2>Custom Year</h2>
+                    <input type="text" id="custom-year" class="metrix-input" value="2022">
+                    <button id="update-year" class="metrix-button">Update</button>
+                    <button id="hide-year" class="metrix-button">Hide</button>
+                </div>
+                
+                <button id="btn-clientCode" class="metrix-button" value="false">Fix Client Code</button>
+                <!-- Rotate pages -->
+                <button id="btn-rotations" class="tool-buttons" value="false">Show Rotation Tools</button>
+                <div id="rotate-tool">
+                    <div class="tool">
+                        <p class="rotate-title">Page 1</p>
+                        <div id="pdf-rot" class="page-sec">
+                            <button class="btn-big ccstyle hostFontSize btn-rotate" id="page1-cclock">
+                                <i class="fas fa-file-pdf"></i>
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button class="btn-big ccstyle hostFontSize btn-rotate" id="page1-clock">
+                                <i class="fas fa-file-pdf"></i>
+                                <i class="fas fa-undo fa-flip-horizontal"></i>
+                            </button>
+                        </div>
+                        <div id="indd-rot" class="page-sec">
+                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page1-cclock">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page1-clock">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <i class="fas fa-undo fa-flip-horizontal"></i>
+                                </button>
+                            </div>
+                        
+                    </div>
+                    <div class="tool">
+                            <p class="rotate-title">Page 2</p>
+                            <div class="page-sec">
+                                <button class="btn-big ccstyle hostFontSize btn-rotate" id="page2-cclock">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="btn-big ccstyle hostFontSize btn-rotate" id="page2-clock">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <i class="fas fa-undo fa-flip-horizontal"></i>
+                                </button>
+                            </div>
+                            <div class="page-sec">
+                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page2-cclock">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page2-clock">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <i class="fas fa-undo fa-flip-horizontal"></i>
+                                </button>
+                            </div>
+                    </div>
+                </div>
+                <button class="btn-big ccstyle hostFontSize exportButton tool-buttons" id="btn-export">Export</button>
+                <p id="cur-file" style="font-weight:bolder;"></p>
+                <img id="bc-img" style="width:50px;" src=""/>
+                
+                <label class="container ccstyle hostFontSize" id="follow-container">Mark for Follow-Up
+                    <input type="checkbox" value="true" id="follow-label">
+                    <span class="checkmark"></span>
+                </label>
+                <div id="reason-container">
+                <textarea id="reason" rows="4" cols="30" onkeyup="reasonChange()" placeholder="Reason for follow-up..."></textarea>
+                <button class="btn-big ccstyle hostFontSize tool-buttons reason-buttons" id="follow-close">Close Document</button>
+                </div>
+            </div> <!-- End .brighter-tint -->
+        </div> <!-- End #invisible-options-->
+
+
+
+        <div id="file-table"></div>
+        
+
+    </div>
+    
+    <!-- These are debugging shortcuts.  Class debuglink items only appear in debug mode  -->
+    <!--
+        These were added by the CEP Extension Builder https://marketplace.visualstudio.com/items?itemName=hennamann.cc-extension-builder
+    -->
+    <!-- <div id="debug-items">
+        <span class="debuglink" id="reload">Reload</span>
+        <span class="debuglink" id="debug">Debug</span>
+        <span class="debuglink" id="sources">Sources</span> 
+        <span class="debuglink" id="csv-down">CSV</span> 
+        <span class="debuglink" id="csv-up">Upload</span> 
+        <span class="debuglink" id="report">Report</span> 
+    </div> -->
+
+    <script src="js/libs/CSInterface.js"></script>
+    <script src="js/libs/jquery-2.0.2.min.js"></script>
+    <!-- <script type="text/javascript" src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script> -->
+
+    <script src="js/themecolors.js"></script>
+    <script src="js/main.js"></script>
+       
+</body>
+</html>

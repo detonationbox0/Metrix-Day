@@ -1,0 +1,17 @@
+{
+  "name": "metrixday",
+  "version": "0.0.1",
+  "description": "A tool for Metirx Dayt",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "fs-extra": "^8.1.0",
+    "node-zxing": "^0.1.4",
+    "tabulator-tables": "^4.3.0"
+  }
+}
