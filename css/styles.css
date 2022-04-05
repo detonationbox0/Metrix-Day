@@ -1,0 +1,462 @@
+/*
+    Apologies for the mess.
+    I'm terrible with CSS.
+*/
+
+ body {
+    /* background-color:red; */
+    margin-top: 10px 0px 0px 0px;
+    padding:0px;
+    height:100vh;
+    
+    /* For drop zone */
+    outline: 0px dashed #53b2fe;
+    outline-offset: -7px;
+}
+
+#warning {
+    margin-top:20px;
+}
+
+#content {
+    display:flex;
+    flex-flow:column;
+    height:100%;
+    padding:15px;
+    padding-top:0px;
+    margin-right:auto;
+    margin-left:auto;
+    vertical-align:middle;
+    width:100%;
+}
+
+#open-btn-area {
+    flex: 0 1 auto;
+}
+
+
+#btn_open {
+    width: 100%;
+    margin-bottom:13px;
+}
+
+#del-group {
+    position:absolute;
+    left:calc(100vw - 50px);
+    bottom:4px;
+    height:20px;
+    font-size:10pt;
+    padding:0px;
+    /* padding-bottom:1px; */
+    width:100px;
+    background-color:#CCC;
+    color:#333;
+    border-color:#333;
+}
+
+#del-group:hover {
+    background-color:#444;
+    color:#CCC;
+}
+
+.set-buttons {
+    background-color:rgba(0, 0, 0, 0);
+    width:50%;
+    margin-bottom:5px;
+    margin-top:20px;
+}
+/* #debug-items {
+    width:100vw;
+    background-color:rgba(0,0,0,.7);
+    position:absolute;
+    bottom:10px;
+    margin-bottom:10px;
+    margin-top:10px;
+    z-index:9999;
+    color:#fff;
+} */
+
+/* Menu Tools */
+
+
+.tool-section {
+    color:rgb(204, 204, 204);
+}
+
+#center {
+    text-align:center;
+    width: 100%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    
+    /* border: solid black; */
+}
+
+.menu-choice {
+    -webkit-appearance: none;
+    text-align:center;
+    overflow:hidden;
+    width:100%;
+    margin-bottom:10px;
+}
+
+.metrix-input {
+    width:65px;
+    margin-right:20px;
+}
+
+.select-choices {
+    padding-top:6px;
+    width:100%;
+    /* height:60px; */
+}
+
+
+#invisible-options {
+    /* background-color:red; */
+    zoom:0.9;
+    flex: 0 1 auto;
+    display:none;
+    text-align:center;
+}
+
+#settings-button {
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    z-index:10001;
+}
+
+.options {
+    display:none;
+}
+
+.brighter-tint {
+    box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.28);
+    background-color:rgba(255, 255, 255, .06);
+    padding:20px 30px 10px 30px;
+    margin:0px;
+    margin-bottom:10px;
+    height:100%;
+    width:100%;
+}
+
+.tool-buttons {
+    width:100%;
+    margin-bottom:20px;
+    margin-top:20px;
+}
+
+.reason-buttons {
+    width:calc(50% - 50px);
+    margin:20px 5px 10px 5px;
+}
+
+#btn-rotations {
+    margin-bottom:10px;
+    /* margin-top:0px; */
+}
+#rotate-tool {
+    display:none;
+    /* max-height:0px;
+    overflow:hidden;
+    transition: max-height 0.2s ease-out;   */
+    /* background-color:rgba(255, 255, 255, .05);
+    padding: 10px 0px 5px 0px;
+    margin-bottom:20px; */
+}
+
+#rotate-tool > .tool {
+    margin-bottom:10px;
+}
+
+.rotate-title {
+    margin:0px 0px 10px 0px;
+}
+
+.btn-rotate, .btn-rotate-indd {
+    margin:0px 0px 0px 0px;
+    padding:5px;
+    width:50px;
+    height:26px;
+}
+
+#follow-container {
+    /* position:relative; */
+    /* bottom:5px; */
+    margin:0px;
+    margin-top:10px;
+    margin-bottom:10px;
+    /* background-color:red; */
+}
+
+#reason-container {
+    display:none;
+}
+
+#reason {
+    width:100%;
+    color:black;
+    /* display:none; */
+}
+
+.page-sec {
+    display:inline-block;
+    margin:0px 0px 10px 0px;
+    padding:0px;
+}
+
+#btn-export {
+    margin-top:10px;
+}
+
+#cur-file {
+    /* color:rgb(60, 179, 113); */
+    margin-top:0px;
+}
+
+.btn-big:hover {
+    background-color:#656565;
+}
+
+
+input[type="checkbox"] {
+    margin-right:5px;
+}
+
+/* Tabulator */
+
+#file-table {
+    /* display:none; */
+    overflow:auto;
+    flex: 1 1 auto;
+}
+
+/* div.tabulator-tableHolder {
+
+    height:calc(100vh - 56px) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+div.tabulator-table {
+    padding-bottom:0px;
+}
+
+div.tabulator-row {
+    min-height:10px;
+    background-color:#444;
+}
+
+div.tabulator-cell {
+    text-align:center;
+    height:35px;
+    line-height:25px;
+}
+
+div.tabulator-header {
+    zoom:80%;
+}
+
+div.tabulator-placeholder {
+   /* height:100vh !important; */
+
+}
+
+
+
+div.tabulator-tableHolder {
+    zoom:80%;
+    
+}
+
+.tabulator-tableHolder::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.open-button {
+    height:25px;
+    line-height:0px;
+}
+
+#gpu-area {
+    padding:5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gpu-area > label {
+    margin-right:5px;
+}
+
+
+
+/* Checkboxes */
+
+.check-container {
+    width:200px;
+    margin:auto;
+}
+
+.container {
+    font-size:1.4rem;
+    line-height:25px;
+    /* margin:auto; */
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/* Message Box */
+#display-message {
+    display: none;
+    place-items: center center;
+    background-color:rgba(0,0,0,.8);
+    z-index:2000;
+    position:absolute;
+    top:0px;
+    right:0px;
+    left:0px;
+    bottom:0px;
+    text-align:center;
+}
+
+#msg-txt {
+    color:white;
+    font-size: 10pt;
+    max-width:60vw;
+    margin-top:20px;
+}
+
+/*
+Those classes will be edited at runtime with values specified
+by the settings of the CC application
+*/
+.hostFontColor{}
+.hostFontFamily{}
+.hostFontSize{}
+
+/*font family, color and size*/
+.hostFont{}
+/*background color*/
+.hostBgd{}
+/*lighter background color*/
+.hostBgdLight{}
+/*darker background color*/
+.hostBgdDark{}
+/*background color and font*/
+.hostElt{}
+
+
+.hostButton{
+    border:1px solid;
+    border-radius:2px;
+    height:20px;
+    vertical-align:bottom;
+    font-family:inherit;
+    color:inherit;
+    font-size:inherit;
+}
+
+/* Custom Scrollbar */
+/* http://webkit-scroll-gen.sourceforge.net/ */
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2196F3;
+  border: 0px none #2196F3;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3aa4f9;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
