@@ -128,19 +128,21 @@ const { on } = require('events');
             });
 
         }, dataEdited:function(data){
-            try {
-                highlightDuplicates (data);
-            } catch (e) {
-                console.log(e);
-            }
+            // try {
+            //     highlightDuplicates (data);
+
+            // } catch (e) {
+            //     console.log(e);
+            // }
 
 
         }, dataLoaded:function(data){
-            try {
-                highlightDuplicates (data);
-            } catch (e) {
-                console.log(e);
-            }
+            console.log(data);
+            // try {
+            //     highlightDuplicates (data);
+            // } catch (e) {
+            //     console.log(e);
+            // }
 
         },
     });
