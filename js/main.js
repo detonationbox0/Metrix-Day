@@ -127,24 +127,28 @@ const { on } = require('events');
                 if (err) console.log(err);
             });
 
-        }, dataEdited:function(data){
-            // try {
-            //     highlightDuplicates (data);
+        }, renderComplete:function(){
+            // 2022-04-15 When the table is done RENDERING, not on change which fires a bunch of times causing errors...
+            console.log("Data Completed?");
+            var data = table.getData(); 
+            try {
+                highlightDuplicates (data);
+            } catch (e) {
+                console.log(e);
+            }
 
-            // } catch (e) {
-            //     console.log(e);
-            // }
 
+        }
+        // , dataChanged:function(data){
+        //     // console.log("Data changed.")
+        //     // console.log(data);
+        //     // try {
+        //     //     highlightDuplicates (data);
+        //     // } catch (e) {
+        //     //     console.log(e);
+        //     // }
 
-        }, dataLoaded:function(data){
-            console.log(data);
-            // try {
-            //     highlightDuplicates (data);
-            // } catch (e) {
-            //     console.log(e);
-            // }
-
-        },
+        // },
     });
 
     table.redraw();
@@ -216,6 +220,8 @@ const { on } = require('events');
                                 filesToAdd.push(file);
                             }
                         });
+                        console.log("Adding files:");
+                        console.log(filesToAdd);
                         addFilesToTable(filesToAdd, folder, "add");
                     });
                 } else {
@@ -234,6 +240,8 @@ const { on } = require('events');
                     var folder = path.dirname(e.dataTransfer.files[0].path);
 
                     // filesToAdd[] now contains a collection of file names to add to Tabulator
+                    console.log("Adding files:");
+                    console.log(filesToAdd);
                     addFilesToTable(filesToAdd, folder, "add");
 
                 }
@@ -1158,7 +1166,9 @@ const { on } = require('events');
         */
         //#region
         $("#btn-clientCode").on("click", function() {
-            csInterface.evalScript('addCode()', function(rtn) {
+            //2022-04-15 - Code needs to be gray on plastics, so feed the product to the function,
+            //condition the color in hostscript
+            csInterface.evalScript(`addCode("${prodType}")`, function(rtn) {
                 // console.log(rtn);
             });
         })
@@ -1373,15 +1383,15 @@ const { on } = require('events');
 
         //in prep for determining the rename-to file name
         var json = JSON.parse(fs.readFileSync(__dirname + '/csvjson.json').toString());
-        console.log(someFiles)
+        // console.log(someFiles)
         for (y=0; y < someFiles.length; y++) {
             var file = someFiles[y];
-            console.log(file)
+            // console.log(file)
             // We need a folder path
 
             // get product name
             if (file.split(".")[1] == "pdf"){
-                console.log(sFile)
+                // console.log(sFile)
                 var sFile = file.split("_");
                 if (sFile[3] == "LET" || sFile[3] == "8") {
                     var prod = sFile[3] + "_" + sFile[4];
@@ -1438,9 +1448,11 @@ const { on } = require('events');
             }
 
         };
-
+        // console.log("tJSON:")
+        // console.log(tJSON);
         table.updateOrAddData(tJSON).then(function() {
-                    // table.redraw(true);
+                    console.log("Redrawing...")
+                    table.redraw(true);
         });
         // if (table.getData().length == 0) {
             

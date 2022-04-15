@@ -844,10 +844,11 @@ function hideYear() {
  * Place Client Code
  ** --------------------------------------------------------------------------
  * Places a client code in the center of the page
+ * @param {string} prodType  2022-04-15 - The type of the current product. Ex: "LPL"
  */
 //#region
-function addCode() {
-
+function addCode(prodType) {
+    
     var clientCode = myInput();
     function myInput() {
         var myWindow = new Window("dialog", "Form");
@@ -888,6 +889,12 @@ function addCode() {
         pointSize:8,
         justification:Justification.LEFT_ALIGN
     };
+
+    //2022-04-15 - If the product type is plastic, make the font color grey not black
+    if (prodType == "LPL" || prodType == "SPL" || prodType == "MPL") {
+        code.transparencySettings.blendingSettings.opacity = 53;
+            // fillColor:"";
+    }
 
     code.textFramePreferences.verticalJustification = VerticalJustification.CENTER_ALIGN;
 
