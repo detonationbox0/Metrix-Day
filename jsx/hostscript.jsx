@@ -130,6 +130,7 @@ function openFile(msg) {
  */
 //#region
     function foldCorrect(fixedLayer) {
+
         var menuType = fixedLayer.split("-")[1];
         var prev = "2019-" + menuType;
         var doc = app.activeDocument;
@@ -147,6 +148,9 @@ function openFile(msg) {
         layers.itemByName(prev).visible = true;
         layers.itemByName(fixedLayer).visible = true;
 
+        //2022-04-19: Also activate and unlock corrected art layer so that fix client code can be added to it
+        layers.itemByName(fixedLayer).locked = false;
+        doc.activeLayer = layers.itemByName(fixedLayer); 
         
         // Get link from preview
         var prevItemLink = new File(layers.itemByName("Preview").rectangles[0].graphics[0].itemLink.filePath);
@@ -237,7 +241,9 @@ function showHideDMLabels(showHide, which) {
          *  
          */
         // If the product is 2SBT or MAG, should export to "[High Quality Print]"
-        if (renameTo == "2SBT" || renameTo == "MAG" || renameTo == "100#DH" || renameTo.split("_")[0] == "SPL" || renameTo.split("_")[0] == "MPL" || renameTo.split("_")[0] == "LPL" || renameTo == "8_5x11FL") {
+        // 2022-04-18: Changed "==" to ".indexOf() != -1" because files that are renamed because of duplicates inclide a "_1" - ex: "MAG_1"A
+        // Would have used .includes(), but es3 ya know
+        if (renameTo.indexOf("2SBT") != -1 || renameTo.indexOf("MAG") != -1 || renameTo.indexOf("100#DH") != -1 || renameTo.split("_")[0].indexOf("SPL") != -1 || renameTo.split("_")[0].indexOf("MPL") != -1 || renameTo.split("_")[0].indexOf("LPL") != -1 || renameTo.indexOf("8_5x11FL") != -1) {
             pdfPreset = "[High Quality Print]";
         }
 

@@ -100,9 +100,21 @@ const { on } = require('events');
             {title:"Files", width:179, field:"file", headerFilter:"input"},
             {title:"Product", field:"prod", headerFilter:"input"},
             {title:"Rename", field:"renameto", editor:"input", headerFilter:"input"},
+            {title:"Code", field:"code", headerFilter:"input"},
             {title:"Follow-Up", width:300, field:"follow", align:"left", headerFilter:"input", editor:"input"},
-            {title:"Folder", field:"folder", headerFilter:"input", visible:false}
+            {title:"Folder", field:"folder", headerFilter:"input", visible:false},
+            {title:"Hightlight", field:"hl", visible:false}
         ],
+        // 2022-04-19: Make row blue if hl is true
+        rowFormatter:function(row){
+            //row - row component
+        
+            var data = row.getData();
+        
+            if(data.hl == true){
+                row.getElement().style.backgroundColor = "#99cc00"; //apply css change to row element
+            }
+        },
         groupHeader:function(value, count, data, group) {
             return value + `<button id="del-group" onclick="delGroup('` + group._group.key + `')">Remove</button`;
         
@@ -127,18 +139,19 @@ const { on } = require('events');
                 if (err) console.log(err);
             });
 
-        }, renderComplete:function(){
-            // 2022-04-15 When the table is done RENDERING, not on change which fires a bunch of times causing errors...
-            console.log("Data Completed?");
-            var data = table.getData(); 
-            try {
-                highlightDuplicates (data);
-            } catch (e) {
-                console.log(e);
-            }
-
-
         }
+        // , renderComplete:function(){
+        //     // 2022-04-15 When the table is done RENDERING, not on change which fires a bunch of times causing errors...
+        //     console.log("Data Completed?");
+        //     var data = table.getData(); 
+        //     // try {
+        //     //     highlightDuplicates (data);
+        //     // } catch (e) {
+        //     //     console.log(e);
+        //     // }
+
+
+        // }
         // , dataChanged:function(data){
         //     // console.log("Data changed.")
         //     // console.log(data);
@@ -1156,7 +1169,7 @@ const { on } = require('events');
             csInterface.evalScript('hideYear()', function(rtn) {
                 // console.log(rtn);
             });
-        })
+        });
         //#endregion
 
         /** -----------------------------------------------------------------------------------
@@ -1222,7 +1235,7 @@ const { on } = require('events');
         });
         
         resetTable(function(newData) {
-            highlightDuplicates (newData);
+            // highlightDuplicates (newData);
         });
 
         // Breaks addFilesToTable() !!!
@@ -1406,7 +1419,8 @@ const { on } = require('events');
                 clientCodes.push({
                     clientCode: cCode,
                     id:x,
-                    prod:prod
+                    prod:prod,
+                    // exists:(clientCodes.des(cCode) && ) ? "dup" : "unq"
                 });                                
                 
                 // If there's no product in the file name, label as 'Unknown Product Type'
@@ -1426,7 +1440,7 @@ const { on } = require('events');
                 // to Tabulator
                 // Only pass if not already in table
                 if (table.getData().length == 0) {
-                    tJSON.push({ id: x, file: file, prod: prod, renameto: tempRename, folder: folder, follow:""});
+                    tJSON.push({ id: x, file: file, prod: prod, code:cCode, renameto: tempRename, folder: folder, follow:"", hl:false});
                 } else {
                     var isIn = false;
                     for (var z = 0; z<tableData.length; z++) {
@@ -1438,7 +1452,7 @@ const { on } = require('events');
                     if (isIn == false) {
                         // No duplicates found
                         
-                        tJSON.push({ id: x, file: file, prod: prod, renameto: tempRename, folder: folder, follow:""});
+                        tJSON.push({ id: x, file: file, prod: prod, code: cCode, renameto: tempRename, folder: folder, follow:"", hl:false});
                     }
                 }
 
@@ -1448,8 +1462,15 @@ const { on } = require('events');
             }
 
         };
-        // console.log("tJSON:")
-        // console.log(tJSON);
+
+        // 2022-04-19: Process tJSON, if the client code and product are the same, create proper renameTo fields!
+        processData(tJSON, function(thisData) {
+            console.log("INSIDE CALLBACK FUNCTION")
+            console.log(thisData);
+        });
+
+
+
         table.updateOrAddData(tJSON).then(function() {
                     console.log("Redrawing...")
                     table.redraw(true);
@@ -1469,16 +1490,18 @@ const { on } = require('events');
 //#endregion
 
 /** -----------------------------------------------------------------------------------
-** Highlight Duplicate Rows in Tabulator Data Set
+** Highlight Duplicate Rows in Tabulator Data Set - DEPRECATED
 ** -----------------------------------------------------------------------------------
 * Displays a message to user of predetermined type
 * @param {array} data Data from tabulator data callbacks
+* DEPRECATED 2022-04-19: Introduced a new method of renaming and highlighting rows
 */
 //#region
+/*
     function highlightDuplicates (data) {
-        /**
-                 * If the count of the client code is > 1, highlight that and this's row
-                 */
+                //
+                // If the count of the client code is > 1, highlight that and this's row
+                //
                 // data is an array of json objects,
                 // loop through those...
                 var ids = [];
@@ -1503,7 +1526,9 @@ const { on } = require('events');
                         if (count > 1) {
                             ids.push({
                                 id: myID,
-                                newName: cProd + "_" + cLine
+                                // 2022-04-18: Instead of contract, use the count instead
+                                // newName: cProd + "_" + cLine
+                                newName: `${cProd}_${count}`
                             });
                             count=0;
                         }
@@ -1524,7 +1549,7 @@ const { on } = require('events');
                 table.redraw();
     }
 
-
+*/
 //#endregion
 
 /** -----------------------------------------------------------------------------------
@@ -1548,6 +1573,43 @@ const { on } = require('events');
     }
 //#endregion
 
+
+/**
+ * 2022-04-19:
+ * Process data, if it contains the same client code and product, assign a new product rename
+ */
+//#region
+ function processData(inputData, callback) {
+    inputData.forEach(function(eachItem) {
+
+        // https://stackoverflow.com/questions/51087288/check-array-of-objects-by-multiple-properties
+        var sameColorCode = inputData.filter( item => item.prod === eachItem.prod && item.code === eachItem.code);
+
+        if (sameColorCode.length > 1) {
+
+            var x = 1;
+            sameColorCode.forEach(function (sameItem) {
+
+                sameItem.renameto = `${sameItem.prod}_${x}`;
+                sameItem.hl = true;
+                x++;
+            });
+            console.log(sameColorCode)            
+            // https://stackoverflow.com/questions/54876239/find-and-replace-object-in-array-based-on-id
+            inputData = inputData.map(x => {
+                const item = sameColorCode.find(({ id }) => id === x.id);
+                return item ? item : x;
+            });
+
+        }
+    });
+
+    // console.log(`returning`);
+    // console.log(data);
+
+    return callback(inputData);
+//#endregion
+}
 
 /** -----------------------------------------------------------------------------------
 ** Boilerplate
