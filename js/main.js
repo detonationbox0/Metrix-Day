@@ -80,7 +80,7 @@ const { on } = require('events');
 //#region
 
     const table = new Tabulator("#file-table", {
-        placeholder:"Drop Metrix Day Files Here",
+        // placeholder:"Drop Metrix Day Files Here",
         movableRows: true,
         groupStartOpen:false,
         groupToggleElement:"header",
@@ -188,14 +188,14 @@ const { on } = require('events');
                 // Show dot dot dot for drop
                 var outlineStat = $("#drag-file").css("outline-width");
                 if (outlineStat =="0px") {
-                    $("#drag-file").css("outline-width", "1px").css("color", "#4affd4");
+                    $("#drag-file").css("outline-width", "1px").css("color", "#53b2fe");
                 }
         
                 return false;
             };
         
             holder.ondragleave = () => {
-                $("#drag-file").css("outline-width", "0px").css("color", "white");;
+                $("#drag-file").css("outline-width", "0px").css("color", "white");
                 return false;
             };
         
@@ -207,7 +207,9 @@ const { on } = require('events');
                 e.preventDefault();
                 // Hide the outline
                 $("#drag-file").css("outline-width", "0px").css("color", "white");
-                $("#drag-file")
+                // Hide the intro message
+                $("#intro-message").hide();
+                // $("#drag-file")
                 var t = 1;
 
                 
@@ -423,11 +425,13 @@ const { on } = require('events');
                             // Based on product type, make different options avialable
                             if (inddFile == "MENU.indt") {
                                 $("#menu-options").css("display", "block");
+                                $("#menu-choice").focus();
                                 $("#barcode-check-container").slideUp("slow");
                             } else if (inddFile == "PC.indt") {
                                 $("#pc-options").css("display", "block");
                             } else if (inddFile == "XL.indt") {
                                 $("#xlmenu-options").css("display", "block");
+                                $("#xlmenu-choice").focus();
                             } else if (inddFile == "JUMBO.indt") {
                                 $("#jumbopc-options").css("display", "block");
                             } else if (inddFile == "2SBT.indt") {

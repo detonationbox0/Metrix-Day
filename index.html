@@ -14,8 +14,11 @@
 </head>
 
 <body require-nodejs class="hostElt" id="drag-file">
+
+
+
     <div id="gpu-area">
-        <label for="gpu" id="gpu-text">Checking for current GPU status...</label><input type="checkbox" id="gpu-check" name="gpu">
+        <input type="checkbox" id="gpu-check" name="gpu"> <label for="gpu-check" id="gpu-text">Checking for current GPU status...</label>
     </div>
     
     <button id="settings-button">
@@ -28,10 +31,12 @@
         </div>
     </div>
     <div id="content">        
-       
+        <div id="intro-message">
+            <p>Drop Metrix Day Files Here...</p>
+        </div>
         <!-- Open Files Button -->
         <!-- <div id="open-btn-area">
-            <button id="btn_open" class="btn-big ccstyle hostFontSize">Open Files</button>
+            <button id="btn_open" class="btn-small ccstyle tool-buttons hostFontSize>Open Files</button>
         </div> -->
 
         <!-- Initially Invisible Section for Options -->
@@ -52,14 +57,13 @@
                     </div>
                     <div class="tool">
                         <!-- Fold Correct Button -->
-                        <button class="btn-big ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
+                        <button class="btn-small ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
                     </div>
                     <div class="tool">
                         <!-- Coupon Fold Check Box -->
-                        <label class="container ccstyle hostFontSize" id="coupon-container">Coupon Fold
-                                <input type="checkbox" value="true" checked="checked" id="coupon" checked>
-                                <span class="checkmark"></span>
-                        </label>
+                        <input type="checkbox" value="true" checked="checked" id="coupon" checked>
+                        <label class="ccstyle hostFontSize" for="coupon" id="coupon-container">Coupon Fold</label>
+
                     </div>
                 </div>
                 <!-- #endregion -->
@@ -71,16 +75,18 @@
                 <div class="options" id="pc-options">
                     <div class="tool">
                         <!-- Fold Correct Button -->
-                        <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                     </div>
-                    <label class="container ccstyle hostFontSize">View Scratch-Off Box
+                    
                         <input type="checkbox" value="true" class="so-box" id="so-pc">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container ccstyle hostFontSize">View Peel Box
+                        <label class="ccstyle hostFontSize" for="so-pc">View Scratch-Off Box</label>
+                        <!-- <span class="checkmark"></span> -->
+                    
+                    
                         <input type="checkbox" value="true" class="peel-box" id="peel-pc">
-                        <span class="checkmark"></span>
-                    </label>
+                        <label class="ccstyle hostFontSize" for="peel-pc">View Peel Box</label>
+                        <!-- <span class="checkmark"></span> -->
+                    
                 </div>
                 <!-- #endregion -->
 
@@ -98,13 +104,11 @@
                     </div>
                     <div class="tool">
                         <!-- Fold Correct Button -->
-                        <button class="btn-big ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
+                        <button class="btn-small ccstyle hostFontSize tool-buttons foldCorrect" id="">Fold Correct</button>
                     </div>
                     <!-- Coupon Fold Check Box -->
-                    <label class="container ccstyle hostFontSize" id="coupon-container">Coupon Fold
-                        <input type="checkbox" value="true" checked="checked" id="xl-coupon" checked>
-                        <span class="checkmark"></span>
-                    </label>
+                    <input type="checkbox" value="true" checked="checked" id="xl-coupon" checked>
+                    <label class="ccstyle hostFontSize" id="coupon-container" for="xl-coupon">Coupon Fold</label>
                 </div>
                 <!-- #endregion -->
 
@@ -115,12 +119,12 @@
                 <div class="options" id="jumbopc-options">
                     <div class="tool">
                         <!-- Fold Correct Button -->
-                        <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                        <button class="btn-small ccstyle tool-buttons hostFontSize flip-pages" id="">Flip Pages</button>
                     </div>
-                    <label class="container ccstyle hostFontSize">View Scratch-Off Box
-                        <input type="checkbox" value="true" class="so-box" id="so-jumbo">
-                        <span class="checkmark"></span>
-                    </label>
+                    
+                    <input type="checkbox" value="true" class="so-box" id="so-jumbo">
+                    <label class="ccstyle hostFontSize" for="so-jumbo">View Scratch-Off Box</label>
+                    
                 </div>
                 <!-- #endregion -->
 
@@ -131,7 +135,7 @@
                 <div class="options" id="2sbt-options">
                         <div class="tool">
                             <!-- Fold Correct Button -->
-                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                         </div>
                 </div>
                 <!-- #endregion -->
@@ -143,7 +147,7 @@
                 <div class="options" id="mag-options">
                         <div class="tool">
                             <!-- Fold Correct Button -->
-                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            <button class="btn-small ccstyle tool-buttons hostFontSize flip-pages" id="">Flip Pages</button>
                         </div>
                 </div>
                 <!-- #endregion -->
@@ -155,7 +159,7 @@
                 <div class="options" id="dh-options">
                         <div class="tool">
                             <!-- Fold Correct Button -->
-                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            <button class="btn-small ccstyle tool-buttons hostFontSize flip-pages" id="">Flip Pages</button>
                         </div>
                 </div>
                 <!-- #endregion -->
@@ -187,7 +191,7 @@
                 <div class="options" id="colossal-options">
                     <div class="tool">
                             <!-- Fold Correct Button -->
-                            <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                            <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                         </div>
                     <div class="tool">
                         <!-- XL Menu Template Selection -->
@@ -224,7 +228,7 @@
                 <div class="options" id="spl-options">
                         <div class="tool">
                                 <!-- Fold Correct Button -->
-                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                                <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                             </div>
                     <div class="tool">
                         <!-- XL Menu Template Selection -->
@@ -246,7 +250,7 @@
                 <div class="options" id="mpl-options">
                         <div class="tool">
                                 <!-- Fold Correct Button -->
-                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                                <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                             </div>
                     <div class="tool">
                         <!-- XL Menu Template Selection -->
@@ -267,7 +271,7 @@
                 <div class="options" id="lpl-options">
                         <div class="tool">
                                 <!-- Fold Correct Button -->
-                                <button class="btn-big ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
+                                <button class="btn-small ccstyle hostFontSize tool-buttons flip-pages" id="">Flip Pages</button>
                             </div>
                     <div class="tool">
                         <!-- XL Menu Template Selection -->
@@ -286,52 +290,52 @@
                 <!-- Everything exports and has the barcode option... -->
                 <!-- Direct Mail Check Box -->
                 <div class="tool" id="barcode-check-container">
-                    <!-- <label class="container ccstyle hostFontSize" id="just-barcode">Barcode
+                    <!-- <label class="ccstyle hostFontSize" id="just-barcode">Barcode
                             <input type="checkbox" value="true" checked="checked" id="barcode-label" checked>
                             <span class="checkmark"></span>
                     </label> -->
-                    <label class="container ccstyle hostFontSize">Indicia
+                   
                         <input type="checkbox" value="true" checked="checked" id="indicia-label" checked>
-                        <span class="checkmark"></span>
-                </label>
+                        <label class="ccstyle hostFontSize" for="indicia-label">Indicia</label>
+                
                 </div>
 
                 <!-- Export Button -->
                 <!-- <div id="custom-barcode-container">
                     <h2>Custom Barcode</h2>
-                    <input type="text" id="custom-barcode" class="metrix-input"><button id="update-barcode" class="metrix-button">Update</button>
+                    <input type="text" id="custom-barcode" class="metrix-input"><button id="update-barcode" class="btn-small ccstyle tool-buttons hostFontSize>Update</button>
                 </div> -->
                 
                 <!-- 2020 update: adding a custom year-->
                 <div id="custom-year-container">
                     <h2>Custom Year</h2>
                     <input type="text" id="custom-year" class="metrix-input" value="2022">
-                    <button id="update-year" class="metrix-button">Update</button>
-                    <button id="hide-year" class="metrix-button">Hide</button>
+                    <button id="update-year" class="btn-small ccstyle hostFontSize small-buttons">Update</button>
+                    <button id="hide-year" class="btn-small ccstyle hostFontSize small-buttons">Hide</button>
                 </div>
                 
-                <button id="btn-clientCode" class="metrix-button" value="false">Fix Client Code</button>
+                <button id="btn-clientCode" class="btn-small ccstyle tool-buttons hostFontSize value="false">Fix Client Code</button>
                 <!-- Rotate pages -->
-                <button id="btn-rotations" class="tool-buttons" value="false">Show Rotation Tools</button>
+                <button id="btn-rotations" class="btn-small ccstyle tool-buttons hostFontSize value="false">Show Rotation Tools</button>
                 <div id="rotate-tool">
                     <div class="tool">
                         <p class="rotate-title">Page 1</p>
                         <div id="pdf-rot" class="page-sec">
-                            <button class="btn-big ccstyle hostFontSize btn-rotate" id="page1-cclock">
+                            <button class="btn-small ccstyle hostFontSize btn-rotate" id="page1-cclock">
                                 <i class="fas fa-file-pdf"></i>
                                 <i class="fas fa-undo"></i>
                             </button>
-                            <button class="btn-big ccstyle hostFontSize btn-rotate" id="page1-clock">
+                            <button class="btn-small ccstyle hostFontSize btn-rotate" id="page1-clock">
                                 <i class="fas fa-file-pdf"></i>
                                 <i class="fas fa-undo fa-flip-horizontal"></i>
                             </button>
                         </div>
                         <div id="indd-rot" class="page-sec">
-                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page1-cclock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate-indd" id="page1-cclock">
                                     <i class="fas fa-file-invoice"></i>
                                     <i class="fas fa-undo"></i>
                                 </button>
-                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page1-clock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate-indd" id="page1-clock">
                                     <i class="fas fa-file-invoice"></i>
                                     <i class="fas fa-undo fa-flip-horizontal"></i>
                                 </button>
@@ -341,38 +345,39 @@
                     <div class="tool">
                             <p class="rotate-title">Page 2</p>
                             <div class="page-sec">
-                                <button class="btn-big ccstyle hostFontSize btn-rotate" id="page2-cclock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate" id="page2-cclock">
                                     <i class="fas fa-file-pdf"></i>
                                     <i class="fas fa-undo"></i>
                                 </button>
-                                <button class="btn-big ccstyle hostFontSize btn-rotate" id="page2-clock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate" id="page2-clock">
                                     <i class="fas fa-file-pdf"></i>
                                     <i class="fas fa-undo fa-flip-horizontal"></i>
                                 </button>
                             </div>
                             <div class="page-sec">
-                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page2-cclock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate-indd" id="page2-cclock">
                                     <i class="fas fa-file-invoice"></i>
                                     <i class="fas fa-undo"></i>
                                 </button>
-                                <button class="btn-big ccstyle hostFontSize btn-rotate-indd" id="page2-clock">
+                                <button class="btn-small ccstyle hostFontSize btn-rotate-indd" id="page2-clock">
                                     <i class="fas fa-file-invoice"></i>
                                     <i class="fas fa-undo fa-flip-horizontal"></i>
                                 </button>
                             </div>
                     </div>
                 </div>
-                <button class="btn-big ccstyle hostFontSize exportButton tool-buttons" id="btn-export">Export</button>
+                <button class="btn-small ccstyle hostFontSize tool-buttons exportButton" id="btn-export">Export</button>
                 <p id="cur-file" style="font-weight:bolder;"></p>
                 <img id="bc-img" style="width:50px;" src=""/>
                 
-                <label class="container ccstyle hostFontSize" id="follow-container">Mark for Follow-Up
-                    <input type="checkbox" value="true" id="follow-label">
-                    <span class="checkmark"></span>
-                </label>
+                
+                <input type="checkbox" value="true" id="follow-label">
+                <label class="ccstyle hostFontSize" id="follow-container" for="follow-label">Mark for Follow-Up</label>
+
+                
                 <div id="reason-container">
                 <textarea id="reason" rows="4" cols="30" onkeyup="reasonChange()" placeholder="Reason for follow-up..."></textarea>
-                <button class="btn-big ccstyle hostFontSize tool-buttons reason-buttons" id="follow-close">Close Document</button>
+                <button class="btn-small ccstyle hostFontSize tool-buttons reason-buttons" id="follow-close">Close Document</button>
                 </div>
             </div> <!-- End .brighter-tint -->
         </div> <!-- End #invisible-options-->

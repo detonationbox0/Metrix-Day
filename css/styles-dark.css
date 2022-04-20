@@ -602,8 +602,8 @@ div.label-large {
 
 input[type="radio"],
 input[type="checkbox"] {
-    /* position: absolute; */
-    /* left: -999999px; */
+    position: absolute; 
+    left: -999999px; 
     /* padding-right:20px; */
 }
 
@@ -713,8 +713,12 @@ select {
 }
 
 select option {
-      background-color: rgb(206, 206, 206);
-      color: rgb(28, 28, 28);
+      background-color: rgb(88, 88, 88);
+      color: white;
+}
+
+select[multiple]:focus option:checked {
+  background: rgb(56, 134, 232);
 }
 
 

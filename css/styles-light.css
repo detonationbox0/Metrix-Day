@@ -601,8 +601,8 @@ div.label-large {
 
 input[type="radio"],
 input[type="checkbox"] {
-    /* position: absolute;
-    left: -999999px; */
+    position: absolute;
+    left: -999999px; 
 }
 
 input[type="radio"]:disabled + label,
