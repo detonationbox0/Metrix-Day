@@ -57,11 +57,20 @@
 
     var path = require('path');
 const { on } = require('events');
+
     // Sejda SDK - This will come in handy in lots of projects!
     // http://sejda.org/
+    // 22-04-21: Sejda requires JRE (Java Runtime) - which is no longer technically free. Consider not using it
     const sejda = "\"" + __dirname + "/sejda/bin/sejda-console" + "\""
     // var PHE = require("print-html-element");
     // var xlsx = require('xlsx');
+
+    /**
+     * 22-04-21:
+     * https://github.com/nbesli/pdf-merger-js
+     */
+    const PDFMerger = require('pdf-merger-js');
+
 //#endregion
 
 /** -----------------------------------------------------------------------------------
@@ -755,6 +764,12 @@ const { on } = require('events');
                     $("#invisible-options").slideUp("slow");
                     $("#follow-label").prop('checked',false);
                     $("#reason").val("");
+
+                    console.log(rtn);
+                    // 22-04-21: Merge and delete the PDFs here!
+                    // (async () = {
+
+                    // });
                     
                 });
 

@@ -164,8 +164,12 @@
     position:absolute;
     right:20px;
     bottom:20px;
-    z-index:9997;
+    z-index:10001;
 }
+
+/* #msg-img {
+    z-index:10002;
+} */
 
 .options {
     display:none;
@@ -450,7 +454,7 @@ label {
     display: none;
     place-items: center center;
     background-color:rgba(0,0,0,.8);
-    z-index:2000;
+    z-index:10002;
     position:absolute;
     top:0px;
     right:0px;
