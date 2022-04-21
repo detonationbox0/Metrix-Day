@@ -1,7 +1,7 @@
 {
   "name": "metrixday",
-  "version": "0.0.1",
-  "description": "A tool for Metirx Dayt",
+  "version": "2.0.0",
+  "description": "A tool for Metirx Day",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="9.0" ExtensionBundleId="com.example.metrixday2021" ExtensionBundleVersion="2.0.0"
-		ExtensionBundleName="Metrix Day 2021" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest Version="9.0" ExtensionBundleId="com.example.metrixday2022" ExtensionBundleVersion="2.0.0"
+		ExtensionBundleName="Metrix Day 2022" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="com.example.metrixday2021" Version="2.0.0" />
+		<Extension Id="com.example.metrixday2022" Version="2.0.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
@@ -50,7 +50,7 @@
 		</RequiredRuntimeList>
 	</ExecutionEnvironment>
 	<DispatchInfoList>
-		<Extension Id="com.example.metrixday2021">
+		<Extension Id="com.example.metrixday2022">
 			<DispatchInfo >
 				<Resources>
 				<MainPath>./index.html</MainPath>
@@ -65,7 +65,7 @@
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Metrix Day 2021</Menu>
+					<Menu>Metrix Day 2022</Menu>
 					<Geometry>
 						<Size>
 							<Height>300</Height>

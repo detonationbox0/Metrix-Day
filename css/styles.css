@@ -45,8 +45,19 @@
     background-color:rgba(0,0,0,.8);
     z-index:9998;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content: center;
+}
+
+.version-message {
+    font-family: 'Courier New', Courier, monospace;
+    color:rgb(51, 51, 51);
+    margin-bottom:0px;
+}
+
+.version-message > a {
+    color:#2680eb;
 }
 
 #open-btn-area {
@@ -57,6 +68,10 @@
 #btn_open {
     width: 100%;
     margin-bottom:13px;
+}
+
+#drop-message {
+    color:white;
 }
 
 #del-group {
@@ -149,7 +164,7 @@
     position:absolute;
     right:20px;
     bottom:20px;
-    z-index:10001;
+    z-index:9997;
 }
 
 .options {
