@@ -69,7 +69,7 @@ const { on } = require('events');
      * 22-04-21:
      * https://github.com/nbesli/pdf-merger-js
      */
-    const PDFMerger = require('pdf-merger-js');
+    // const PDFMerger = require('pdf-merger-js');
 
 //#endregion
 

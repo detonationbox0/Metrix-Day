@@ -12,7 +12,6 @@
     "csvtojson": "^2.0.10",
     "fs-extra": "^8.1.0",
     "node-zxing": "^0.1.4",
-    "pdf-merger-js": "^3.4.0",
     "tabulator-tables": "^4.3.0"
   }
 }
