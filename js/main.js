@@ -90,12 +90,12 @@ const { on } = require('events');
         groupBy:"prod",
         columns:[
             {title:"id", field:"id", headerFilter:"input", visible:false},
-            {formatter:"buttonCross", width:40, align:"center", cellClick:function(e, cell){
+            {formatter:"buttonCross", width:40, align:"center", vertAlign:"middle", cellClick:function(e, cell){
                 cell.getRow().delete();
             }},
             {title:"Flatten", width:90, formatter:function(cell, formatterParams) {
                 // Add a button, with a class to trigger onclick, and value to indicate file details
-                return "<button class='open-button' value='" + cell._cell.row.data.file + ";" + cell._cell.row.data.folder + ";" + cell._cell.row.data.prod + ";" + cell._cell.row.data.id + "'>Open</button>"
+                return "<button class='btn-small ccstyle open-buttons hostFontSize' value='" + cell._cell.row.data.file + ";" + cell._cell.row.data.folder + ";" + cell._cell.row.data.prod + ";" + cell._cell.row.data.id + "'>Open</button>"
             }},
             {title:"Files", width:179, field:"file", headerFilter:"input"},
             {title:"Product", field:"prod", headerFilter:"input"},
@@ -330,7 +330,7 @@ const { on } = require('events');
         * Assign relavent information to global variables
         */
         //#region
-            $('body').on('click', '.open-button', function() {
+            $('body').on('click', '.open-buttons', function() {
                 $("#invisible-options").slideDown("slow");
 
                 // Extract information needed from the button's value

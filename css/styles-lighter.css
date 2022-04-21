@@ -516,6 +516,7 @@ label {
     font-family: "San Francisco", "Helvetica Neue", "Lucida Grande", "Segoe UI";
     font-size: 12px;
     font-size: 1.2rem;
+    color:rgb(51, 51, 51);
 }
 
 h1 {
@@ -683,6 +684,7 @@ input[type=text] {
     border-bottom: 1px solid rgb(173, 173, 173);
     padding-left: 4px;
     outline: none;
+    color:rgb(51, 51, 51);
 }
 
 input[type=text]::-moz-selection {
