@@ -222,6 +222,7 @@ function showHideDMLabels(showHide, which) {
 // exportPDF (pdfPath) 
 //#region
     function exportPDF (pdfPath, dirName, renameTo, pdfPreset, numPages) {
+        // alert("🧪 Entered function...")
         var myDoc = app.activeDocument;
 
         // Used in for loop below, based on number of pages.
@@ -230,16 +231,16 @@ function showHideDMLabels(showHide, which) {
         /** --------------------------------------------------------------------------
          * Async Export and afterExport event listener
          ** --------------------------------------------------------------------------
-         *  This was more unpredictable than it was useful.
-         */
+        *  This was more unpredictable than it was useful.
+        */
         // Listen(myDoc, pdfPath, dirName); 
         //myDoc.asyncexportFile(ExportFormat.pdfType, File(pdfPath), false, "Mail Shark Print 2019");
         
         /** --------------------------------------------------------------------------
          * Sync Export
          ** --------------------------------------------------------------------------
-         *  
-         */
+        *  
+        */
         // If the product is 2SBT or MAG, should export to "[High Quality Print]"
         // 2022-04-18: Changed "==" to ".indexOf() != -1" because files that are renamed because of duplicates inclide a "_1" - ex: "MAG_1"A
         // Would have used .includes(), but es3 ya know
@@ -248,14 +249,19 @@ function showHideDMLabels(showHide, which) {
         }
 
         
-
-        myDoc.exportFile(ExportFormat.pdfType, File(pdfPath), false, pdfPreset);
+        // alert("🧪 Exporting...")
+        try {
+            myDoc.exportFile(ExportFormat.pdfType, File(pdfPath), false, pdfPreset);
+        } catch (e) {
+            // alert("🧪 Failed to export. Error:")
+            alert(e);
+        }
         
         /** --------------------------------------------------------------------------
          * BridgeTalk tells Photoshop to flatten the document.
          ** --------------------------------------------------------------------------
-         *  
-         */
+        *  
+        */
         var bt = new BridgeTalk();
         bt.target = "photoshop";
         bt.body = "var pdfPath = new File('" + pdfPath + "')\
@@ -309,7 +315,7 @@ function showHideDMLabels(showHide, which) {
                 delPath1.remove();
                 delPath2.remove();
             } catch(e) {
-     
+    
             }
 
             /* Delete teh files here
@@ -326,6 +332,117 @@ function showHideDMLabels(showHide, which) {
         // Close the doc
         myDoc.close(SaveOptions.NO)
     }
+    // function exportPDF (pdfPath, dirName, renameTo, pdfPreset, numPages) {
+    //     console.log("🧪 Entered function...")
+    //     var myDoc = app.activeDocument;
+
+    //     // Used in for loop below, based on number of pages.
+    //     var toNum = Number(numPages);
+    //     var loopTo = toNum + 1;
+    //     /** --------------------------------------------------------------------------
+    //      * Async Export and afterExport event listener
+    //      ** --------------------------------------------------------------------------
+    //      *  This was more unpredictable than it was useful.
+    //      */
+    //     // Listen(myDoc, pdfPath, dirName); 
+    //     //myDoc.asyncexportFile(ExportFormat.pdfType, File(pdfPath), false, "Mail Shark Print 2019");
+        
+    //     /** --------------------------------------------------------------------------
+    //      * Sync Export
+    //      ** --------------------------------------------------------------------------
+    //      *  
+    //      */
+    //     // If the product is 2SBT or MAG, should export to "[High Quality Print]"
+    //     // 2022-04-18: Changed "==" to ".indexOf() != -1" because files that are renamed because of duplicates inclide a "_1" - ex: "MAG_1"A
+    //     // Would have used .includes(), but es3 ya know
+    //     if (renameTo.indexOf("2SBT") != -1 || renameTo.indexOf("MAG") != -1 || renameTo.indexOf("100#DH") != -1 || renameTo.split("_")[0].indexOf("SPL") != -1 || renameTo.split("_")[0].indexOf("MPL") != -1 || renameTo.split("_")[0].indexOf("LPL") != -1 || renameTo.indexOf("8_5x11FL") != -1) {
+    //         pdfPreset = "[High Quality Print]";
+    //     }
+
+        
+    //     console.log("🧪 Exporting...")
+    //     try {
+    //         myDoc.exportFile(ExportFormat.pdfType, File(pdfPath), false, pdfPreset);
+    //     } catch (e) {
+    //         console.log("🧪 Failed to export. Error:")
+    //         console.log(e);
+    //     }
+        
+    //     /** --------------------------------------------------------------------------
+    //      * BridgeTalk tells Photoshop to flatten the document.
+    //      ** --------------------------------------------------------------------------
+    //      *  
+    //      */
+    //     var bt = new BridgeTalk();
+    //     bt.target = "photoshop";
+    //     bt.body = "var pdfPath = new File('" + pdfPath + "')\
+    //     var dirName = '" + dirName + "'\
+    //     var fileName = pdfPath.name;\
+    //     var remExt = fileName.split('.')[0];\
+    //     var folderPath = pdfPath.parent\
+    //     var flattenedFiles = [];\
+    //     for (i=1; i<" + loopTo + "; i++) {\
+    //         var fullPath = new File(folderPath + '/' + remExt + '-' + i + '.pdf')\
+    //         flattenedFiles.push(folderPath + '/' + remExt + '-' + i + '.pdf')\
+    //         // alert(fullPath)\
+    //         // Create a PDF option object\
+    //         var pdfOpenOptions = new PDFOpenOptions;\
+    //         pdfOpenOptions.antiAlias = true;\
+    //         pdfOpenOptions.cropPage = CropToType.MEDIABOX;\
+    //         pdfOpenOptions.bitsPerChannel = BitsPerChannelType.SIXTEEN;\
+    //         pdfOpenOptions.mode = OpenDocumentMode.CMYK;\
+    //         pdfOpenOptions.resolution = 300;\
+    //         pdfOpenOptions.page = i;\
+    //         pdfOpenOptions.usePageNumber = true;\
+    //         // open the file\
+    //         app.open( pdfPath, pdfOpenOptions, false);\
+    //         var doc = app.activeDocument;\
+    //         doc.flatten();\
+    //         pdfSaveOptions = new PDFSaveOptions();\
+    //         pdfSaveOptions.pdfPreset = '[High Quality Print]'\
+    //         doc.saveAs(fullPath, pdfSaveOptions, true, Extension.LOWERCASE)\
+    //         doc.close(SaveOptions.DONOTSAVECHANGES);\
+    //     }\
+    //     pdfPath.remove();\
+    //     var scpt = '" + dirName + "' + '/merge.scpt';\
+    //     try {\
+    //         app.system('osascript \"' + scpt + '\" \"' + flattenedFiles[0].replace(/%20/g, ' ') + '\" \"' + flattenedFiles[1].replace(/%20/g, ' ') + '\"' + ' \"" + pdfPath + "\" \"" + numPages + "\"');\
+    //         var delFlatOne = new File(flattenedFiles[0].replace(/%20/g, ' '));\
+    //         var delFlatTwo = new File(flattenedFiles[1].replace(/%20/g, ' '));\
+    //     } catch(e) {\
+    //         var replaceIn = flattenedFiles[0].replace(/%20/g, ' '); \
+    //         var newName = replaceIn.replace('-1', ''); \
+    //         var delFlatOne = new File(replaceIn);\
+    //         delFlatOne.rename(fileName) \
+    //     }";
+
+    //     bt.onResult = function (inBT) {
+    //         result = eval(inBT.body);
+    //         var delFile1 = pdfPath.replace(".pdf", "-1.pdf");
+    //         var delFile2 = pdfPath.replace(".pdf", "-2.pdf");
+    //         var delPath1 = new File(delFile1);
+    //         var delPath2 = new File(delFile2);
+    //         try {
+    //             delPath1.remove();
+    //             delPath2.remove();
+    //         } catch(e) {
+     
+    //         }
+
+    //         /* Delete teh files here
+    //         delFlatOne.remove();\
+    //         delFlatTwo.remove();\*/
+            
+    //     };
+
+    //     bt.onError = function (inBT) {
+    //         alert(inBT.body);
+    //     }
+        
+    //     bt.send();
+    //     // Close the doc
+    //     myDoc.close(SaveOptions.NO)
+    // }
 //#endregion
 
 /** --------------------------------------------------------------------------

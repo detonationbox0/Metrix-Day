@@ -754,24 +754,32 @@ const { on } = require('events');
                 table.redraw();
 
                 
+                console.log("🧪 Evaluating... ")
+                console.log('exportPDF("' + pdfFile + '", "' + __dirname + '", "' + renameTo + '", "' + globPreset + '", "' + numPages + '")')
+                // csInterface.evalScript('exportPDF("/Users/mattshark/Downloads/DownloadAll_Matt_722_artfiles/Flattened/16343_COLPC.pdf", "/Library/Application Support/Adobe/CEP/extensions/com.example.metrixday2022", "COLPC", "Mail Shark Print 2022", "2")')
+                
+                try {
+                    csInterface.evalScript('exportPDF("' + pdfFile + '", "' + __dirname + '", "' + renameTo + '", "' + globPreset + '", "' + numPages + '")', function(rtn) {
+                        // Reset the visibility of options turn off on open
+                        boolColor = false;
+                        $("#barcode-check-container").css("display", "block");
+                        $("#custom-barcode-container").css("display", "block");
+                        $("#just-barcode").css("display", "block");
+                        $("#invisible-options").slideUp("slow");
+                        $("#follow-label").prop('checked',false);
+                        $("#reason").val("");
+    
+                        console.log(rtn);
+                        // 22-04-21: Merge and delete the PDFs here!
+                        // (async () = {
+    
+                        // });
+                        
+                    });
+                } catch (e) {
+                    console.log("🧪 I can't evaluate! Error:", e);
+                }
 
-                csInterface.evalScript('exportPDF("' + pdfFile + '", "' + __dirname + '", "' + renameTo + '", "' + globPreset + '", "' + numPages + '")', function(rtn) {
-                    // Reset the visibility of options turn off on open
-                    boolColor = false;
-                    $("#barcode-check-container").css("display", "block");
-                    $("#custom-barcode-container").css("display", "block");
-                    $("#just-barcode").css("display", "block");
-                    $("#invisible-options").slideUp("slow");
-                    $("#follow-label").prop('checked',false);
-                    $("#reason").val("");
-
-                    console.log(rtn);
-                    // 22-04-21: Merge and delete the PDFs here!
-                    // (async () = {
-
-                    // });
-                    
-                });
 
 
         });

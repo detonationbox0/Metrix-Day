@@ -1,8 +1,3 @@
-# Dependency directories
-node_modules/
-zint/
-example-print-group/
-
 # Logs
 logs
 *.log
